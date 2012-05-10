@@ -62,7 +62,7 @@ teine argument, kui palju ridu
 kolmas arg:: ooteaeg
 neljas : samma pikkus
 '''
-timeArray=AjmScanner.scanAll(10,5,2,10)
+timeArray=AjmScanner.scanAll(6,4,2,15)
 print "please put a file into a programm folder ,name it 'data.txt' and press 1"
 proceed=input()
 thermoData=loadInfo('data.txt')
@@ -70,7 +70,7 @@ thermoData=loadInfo('data.txt')
 
 print timeArray
 imageMap=buildThermoMap(timeArray,thermoData)
-#print imageMap
+print imageMap
 drawPic(imageMap)
 
 '''
