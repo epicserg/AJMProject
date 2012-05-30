@@ -1,5 +1,6 @@
 import AjmScanner
 import pylab
+import simplejson
 
 def removeValuesFromList(theList, val):
         while val in theList:
@@ -73,22 +74,17 @@ def rotatePic(gridArray):
         returnMatrix.append(locArray)
     return returnMatrix
 
-def findMax(matrix):
-    maxvalue=matrix[0][0]
-    for row in matrix:
-        for element in row:
-            if(element>maxvalue):
-                maxvalue=element
-    return maxvalue            
+def saveInfo(rotatedMap):
+        f = open('output.txt', 'w')
+        
+        simplejson.dump(rotatedMap, f)
+        f.close()
 
-def findMin(matrix):
-    minvalue=matrix[0][0]
-    for row in matrix:
-        for element in row:
-            if(element<minvalue):
-                minvalue=element
-    return minvalue
 
+
+
+
+        
 #main test
 '''
 scanAll :::
@@ -103,11 +99,18 @@ proceed=input()
 thermoData=loadInfo('data.txt')
 
 
-#print timeArray
+print timeArray
 imageMap=buildThermoMap(timeArray,thermoData)
-#print imageMap
-drawPic(rotatePic(imageMap))
-#print "maxTemp is "+str(findMax(imageMap))+" min temp was "+str(findMax(imageMap))
+print "save this array if you want to view it afterwards"
+
+rotatedMap=rotatePic(imageMap)
+
+drawPic(rotatedMap)
+saveInfo(rotatedMap)
+
+
+
+
 
 '''
 #test for loading and finding data
